@@ -1,9 +1,16 @@
 <?php
+
+// Inicia oreanuda la sesión del usuario para gestionar datos globales ($_SESSION)
 session_start(); 
+
+// Importa el modelo Usuario que contiene las consultas SQL a la base de datos
 require_once "../modelos/Usuario.php";
 
+// Instancia el objeto de la clase Usuario
 $usuario=new Usuario();
 
+// Recepción y desinfección de variables enviadas por método POST.
+// Si existen en $_POST, se limpian los caracteres especiales con la función limpiarCadena(); de lo contrario, quedan vacías.
 $idusuario=isset($_POST["idusuario"])? limpiarCadena($_POST["idusuario"]):"";
 $nombre=isset($_POST["nombre"])? limpiarCadena($_POST["nombre"]):"";
 $tipo_documento=isset($_POST["tipo_documento"])? limpiarCadena($_POST["tipo_documento"]):"";
